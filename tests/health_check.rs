@@ -1,6 +1,6 @@
-use std::net::TcpListener;
-use sqlx::{PgConnection, Connection};
 use hub::configuration::get_configuration;
+use sqlx::{Connection, PgConnection};
+use std::net::TcpListener;
 
 #[actix_rt::test]
 async fn health_check_works() {
@@ -54,9 +54,7 @@ async fn add_note_returns_a_400_when_data_is_missing() {
     // Arrange
     let app_address = spawn_app();
     let client = reqwest::Client::new();
-    let test_cases = vec![
-        ("", "missing both name and email")
-    ];
+    let test_cases = vec![("", "missing both name and email")];
 
     for (invalid_body, error_message) in test_cases {
         // Act

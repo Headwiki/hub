@@ -1,5 +1,5 @@
-use hub::startup::run;
 use hub::configuration::get_configuration;
+use hub::startup::run;
 use std::net::TcpListener;
 
 #[actix_web::main]

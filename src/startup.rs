@@ -1,6 +1,6 @@
 use crate::routes::*;
-use actix_web::{web, App, HttpServer};
 use actix_web::dev::Server;
+use actix_web::{web, App, HttpServer};
 use std::net::TcpListener;
 
 pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
@@ -9,8 +9,8 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
             .route("/health_check", web::get().to(health_check))
             .route("/notes", web::post().to(add_note))
     })
-        .listen(listener)?
-        .run();
+    .listen(listener)?
+    .run();
 
     Ok(server)
 }
